@@ -4,6 +4,13 @@
 #include <string.h>
 #include <assert.h>
 
+#ifdef _WIN32
+#  include <malloc.h>
+#  define alloca _alloca
+#else
+#  include <alloca.h>
+#endif
+
 #define rbt_child_direction(n) \
   ((n) == (n)->parent->left ? RBT_LEFT : RBT_RIGHT)
 
