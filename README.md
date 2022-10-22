@@ -79,7 +79,7 @@ bool my_insert(struct rbtree *tree, struct my_type *data) {
     else
       return false;
   }
-  rbt_insert (tree, &node->rbt_node, parent, dir);
+  rbt_insert (tree, &data->rbt_node, parent, dir);
   return true;
 }
 ```
