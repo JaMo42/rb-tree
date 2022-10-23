@@ -79,6 +79,7 @@ bool my_insert(struct rbtree *tree, struct my_type *data) {
     else
       return false;
   }
+  rbt_insert (tree, &data->rbt_node, parent, dir);
   return true;
 }
 ```
@@ -94,7 +95,7 @@ Example:
 ```c
 struct my_type *data = my_search (tree, 123);
 if (data) {
-  rbt_erase (tree, data);
+  rbt_erase (tree, &data->node);
   free (data);
 }
 ```
