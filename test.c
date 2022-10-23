@@ -50,7 +50,7 @@ intset_insert (Int_Set *self, int i)
 {
   Int_Set_Node *n_self, *new_node;
   struct rbt_node *node = self->tree.root, *parent = NULL;
-  enum rbt_direction direction;
+  enum rbt_direction direction = RBT_LEFT;
 
   while (node)
     {

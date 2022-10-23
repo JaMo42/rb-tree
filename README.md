@@ -140,3 +140,13 @@ void my_print_node(struct rbt_node *node, unsigned width, char *buf) {
 rbt_print (tree, my_print_node, 3, stdout);
 ```
 
+Output:
+
+```
+      .-----( 10)-------------.
+  .-(  7)-.           .-----( 17)---------.
+(  6)   (  9)     .-( 12)-.           .-( 26)-.
+                ( 11)   ( 13)     .-( 19)   ( 31)
+                                ( 18)
+```
+
