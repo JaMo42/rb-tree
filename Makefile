@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -Wextra -std=c99
+CFLAGS=-Wall -Wextra -O3 -march=native -mtune=native
 
 all: test static dynamic
 

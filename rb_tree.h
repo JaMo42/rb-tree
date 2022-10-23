@@ -74,6 +74,7 @@ struct rbt_node *rbt_prev (struct rbt_node *node);
    `node_width` parameter given to `rbt_print`. */
 typedef void (*rbt_print_node_t) (struct rbt_node *node, unsigned width,
                                   char *buf);
+
 /* Prints the tree into the given stream.
    The `print_node` function should format a given node into the given buffer.
    `node_width` is the width each node takes in the output. */
