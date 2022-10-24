@@ -120,7 +120,7 @@ intset_contains (Int_Set *self, int i)
 
 /* for rbt_print */
 static void
-intset_print_node (struct rbt_node *node, unsigned width, char *buf)
+intset_print_node (const struct rbt_node *node, unsigned width, char *buf)
 {
   Int_Set_Node *self = RBT_CONTAINER_OF (node, Int_Set_Node, rbt_node);
   snprintf (buf, width+1, "%*d", width, self->value);

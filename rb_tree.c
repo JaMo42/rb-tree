@@ -277,7 +277,7 @@ rbt_delete_3: /* case 4 */
 
 
 static unsigned
-rbt_height_impl (struct rbt_node *node)
+rbt_height_impl (const struct rbt_node *node)
 {
   if (!node)
     return 0;
@@ -287,14 +287,14 @@ rbt_height_impl (struct rbt_node *node)
 }
 
 unsigned
-rbt_height (struct rbtree *tree)
+rbt_height (const struct rbtree *tree)
 {
   return rbt_height_impl (tree->root);
 }
 
 
 static unsigned
-rbt_size_impl (struct rbt_node *node)
+rbt_size_impl (const struct rbt_node *node)
 {
   return (node
           ? 1 + rbt_size_impl (node->left) + rbt_size_impl (node->right)
@@ -302,14 +302,14 @@ rbt_size_impl (struct rbt_node *node)
 }
 
 unsigned
-rbt_size (struct rbtree *tree)
+rbt_size (const struct rbtree *tree)
 {
   return rbt_size_impl (tree->root);
 }
 
 
 struct rbt_node *
-rbt_next (struct rbt_node *node)
+rbt_next (const struct rbt_node *node)
 {
   struct rbt_node *parent;
   if (node->right)
@@ -326,7 +326,7 @@ rbt_next (struct rbt_node *node)
 
 
 struct rbt_node *
-rbt_prev (struct rbt_node *node)
+rbt_prev (const struct rbt_node *node)
 {
   struct rbt_node *parent;
   if (node->left)
@@ -343,7 +343,7 @@ rbt_prev (struct rbt_node *node)
 
 
 struct rbt_node *
-rbt_first (struct rbtree *self)
+rbt_first (const struct rbtree *self)
 {
   struct rbt_node *node = self->root;
   while (node->left)
@@ -353,7 +353,7 @@ rbt_first (struct rbtree *self)
 
 
 struct rbt_node *
-rbt_last (struct rbtree *self)
+rbt_last (const struct rbtree *self)
 {
   struct rbt_node *node = self->root;
   while (node->right)
@@ -409,7 +409,7 @@ rbt_print_impl (char **buf, struct rbt_node *node, rbt_print_node_t print_node,
 }
 
 void
-rbt_print (struct rbtree *tree, rbt_print_node_t print_node,
+rbt_print (const struct rbtree *tree, rbt_print_node_t print_node,
            unsigned node_width, FILE *stream)
 {
   const unsigned height = rbt_height (tree);
