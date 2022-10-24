@@ -317,7 +317,7 @@ rbt_next (const struct rbt_node *node)
       node = node->right;
       while (node->left)
         node = node->left;
-      return node;
+      return (struct rbt_node *)node;
     }
   while ((parent = node->parent) && node == parent->right)
     node = parent;
@@ -334,7 +334,7 @@ rbt_prev (const struct rbt_node *node)
       node = node->left;
       while (node->right)
         node = node->right;
-      return node;
+      return (struct rbt_node *)node;
     }
   while ((parent = node->parent) && node == parent->left)
     node = parent;
