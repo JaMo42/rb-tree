@@ -5,8 +5,10 @@
 #include <time.h>
 #include <string.h>
 
+#define VECTOR_IMPLEMENTATION
 #include "vector.h"
 
+#define RBT_IMPLEMENTATION
 #include "rb_tree.h"
 
 typedef struct
@@ -236,9 +238,12 @@ random_test (unsigned seed, bool verbose)
 int
 main (int argc, const char *const *argv)
 {
+  enum { COUNT = 10 };
+
   const int node_width = 3;
   int i;
   Int_Set my_set;
+
   for (i = 1; i < argc; ++i)
     {
       if (strcmp (argv[i], "random") == 0)
@@ -250,30 +255,30 @@ main (int argc, const char *const *argv)
 
   intset_construct (&my_set);
 
-  for (i = 1; i <= 10; ++i)
+  for (i = 1; i <= COUNT; ++i)
     intset_insert (&my_set, i);
 
   puts ("Full tree:");
   rbt_print (&my_set.tree, intset_print_node, node_width, stdout);
   intset_print (&my_set);
 
-  assert (my_set.size == 10);
-  for (i = 1; i <= 10; ++i)
+  assert (my_set.size == COUNT);
+  for (i = 1; i <= COUNT; ++i)
     assert (intset_contains (&my_set, i));
 
-  for (i = 1; i <= 10; ++i)
+  for (i = 1; i <= COUNT; ++i)
     intset_insert (&my_set, i);
-  assert (my_set.size == 10);
+  assert (my_set.size == COUNT);
 
-  for (i = 1; i <= 10; i += 2)
+  for (i = 1; i <= COUNT; i += 2)
     intset_remove (&my_set, i);
 
   puts ("Odd removed:");
   rbt_print (&my_set.tree, intset_print_node, node_width, stdout);
   intset_print (&my_set);
 
-  assert (my_set.size == 5);
-  for (i = 1; i <= 10; ++i)
+  assert (my_set.size == COUNT/2);
+  for (i = 1; i <= COUNT; ++i)
     assert (intset_contains (&my_set, i) == !(i % 2));
 
   intset_destruct (&my_set);
